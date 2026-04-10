@@ -3,6 +3,15 @@ import nodemailer from "nodemailer"
 
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>()
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;")
+}
+
 function checkRateLimit(ip: string): boolean {
   const now = Date.now()
   const windowMs = 15 * 60 * 1000
@@ -45,8 +54,14 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Ad ve e-posta gereklidir." }, { status: 400 })
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
+    // Simple, ReDoS-safe email validation
+    const emailStr = String(email)
+    const atIndex = emailStr.indexOf("@")
+    if (atIndex < 1 || atIndex !== emailStr.lastIndexOf("@") || emailStr.length > 254) {
+      return NextResponse.json({ error: "Geçersiz e-posta adresi." }, { status: 400 })
+    }
+    const domain = emailStr.slice(atIndex + 1)
+    if (!domain || !domain.includes(".") || domain.length < 3) {
       return NextResponse.json({ error: "Geçersiz e-posta adresi." }, { status: 400 })
     }
 
@@ -64,32 +79,32 @@ export async function POST(req: Request) {
     let htmlContent = ""
 
     if (type === "configurator") {
-      subject = `Özel Tasarım Talebi - ${name}`
+      subject = `Özel Tasarım Talebi - ${escapeHtml(String(name))}`
       htmlContent = `
         <h2>Yeni Özel Tasarım Talebi</h2>
         <h3>İletişim Bilgileri</h3>
-        <p><strong>Ad Soyad:</strong> ${name}</p>
-        <p><strong>E-posta:</strong> ${email}</p>
-        <p><strong>Telefon:</strong> ${phone || "-"}</p>
+        <p><strong>Ad Soyad:</strong> ${escapeHtml(String(name))}</p>
+        <p><strong>E-posta:</strong> ${escapeHtml(String(email))}</p>
+        <p><strong>Telefon:</strong> ${escapeHtml(String(phone || "-"))}</p>
         <h3>Konfigürasyon</h3>
         <ul>
-          <li><strong>Ürün Tipi:</strong> ${configuratorData?.productType || "-"}</li>
-          <li><strong>Ölçüler:</strong> ${configuratorData?.width || "-"}cm x ${configuratorData?.depth || "-"}cm x ${configuratorData?.height || "-"}cm</li>
-          <li><strong>Malzeme:</strong> ${configuratorData?.material || "-"}</li>
-          <li><strong>Renk:</strong> ${configuratorData?.color || "-"}</li>
-          <li><strong>Minder Kumaşı:</strong> ${configuratorData?.fabric || "-"}</li>
+          <li><strong>Ürün Tipi:</strong> ${escapeHtml(String(configuratorData?.productType || "-"))}</li>
+          <li><strong>Ölçüler:</strong> ${escapeHtml(String(configuratorData?.width || "-"))}cm x ${escapeHtml(String(configuratorData?.depth || "-"))}cm x ${escapeHtml(String(configuratorData?.height || "-"))}cm</li>
+          <li><strong>Malzeme:</strong> ${escapeHtml(String(configuratorData?.material || "-"))}</li>
+          <li><strong>Renk:</strong> ${escapeHtml(String(configuratorData?.color || "-"))}</li>
+          <li><strong>Minder Kumaşı:</strong> ${escapeHtml(String(configuratorData?.fabric || "-"))}</li>
         </ul>
-        ${message ? `<h3>Ek Notlar</h3><p>${message}</p>` : ""}
+        ${message ? `<h3>Ek Notlar</h3><p>${escapeHtml(String(message))}</p>` : ""}
       `
     } else {
-      subject = `İletişim Formu - ${name}`
+      subject = `İletişim Formu - ${escapeHtml(String(name))}`
       htmlContent = `
         <h2>Yeni İletişim Mesajı</h2>
-        <p><strong>Ad Soyad:</strong> ${name}</p>
-        <p><strong>E-posta:</strong> ${email}</p>
-        <p><strong>Telefon:</strong> ${phone || "-"}</p>
+        <p><strong>Ad Soyad:</strong> ${escapeHtml(String(name))}</p>
+        <p><strong>E-posta:</strong> ${escapeHtml(String(email))}</p>
+        <p><strong>Telefon:</strong> ${escapeHtml(String(phone || "-"))}</p>
         <h3>Mesaj</h3>
-        <p>${message}</p>
+        <p>${escapeHtml(String(message || ""))}</p>
       `
     }
 
