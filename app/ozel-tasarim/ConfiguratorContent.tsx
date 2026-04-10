@@ -116,7 +116,7 @@ export default function ConfiguratorContent() {
             <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
             <h2 className="text-2xl font-bold text-gray-900 mb-3">Talebiniz Alındı!</h2>
             <p className="text-gray-600 mb-6">Özel tasarım talebinizi aldık. Ekibimiz en kısa sürede sizinle iletişime geçecek.</p>
-            <button onClick={resetForm}
+            <button type="button" onClick={resetForm}
               className="text-green-700 font-semibold hover:underline">
               Yeni tasarım başlat
             </button>
