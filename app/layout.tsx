@@ -1,10 +1,7 @@
 import type React from "react"
 import "./globals.css"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import Layout from "./components/layout"
-
-const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.ornekisdekor.com"),
@@ -115,7 +112,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="tr">
-      <body className={inter.className}>
+      <body className="font-sans antialiased">
         <Layout>{children}</Layout>
         <script
           type="application/ld+json"

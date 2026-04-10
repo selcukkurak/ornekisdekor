@@ -2,21 +2,13 @@ import type { Metadata } from "next"
 import ContactContent from "./ContactContent"
 
 export const metadata: Metadata = {
-  title: "İletişim - Bize Ulaşın",
+  title: "İletişim - Ankara Bahçe Mobilyası Showroom",
   description:
-    "Ornek Is Dekor ile iletişime geçin. Adres bilgilerimiz, telefon numaramız ve e-posta adresimiz. Sorularınız için bize ulaşın veya iletişim formumuz aracılığıyla mesaj gönderin.",
+    "Örnek İş Dekor ile iletişime geçin. Ostim OSB Mahallesi, Yenimahalle / Ankara. Tel: (0312) 384 56 78. Showroom ziyareti için randevu alın.",
   openGraph: {
-    title: "Ornek Is Dekor - İletişim Bilgileri",
+    title: "İletişim | Örnek İş Dekor - Ostim OSB Ankara",
     description:
-      "Ornek Is Dekor ile iletişime geçin. Adres bilgilerimiz, telefon numaramız ve e-posta adresimiz. Sorularınız için bize ulaşın veya iletişim formumuz aracılığıyla mesaj gönderin.",
-    images: [
-      {
-        url: "https://www.ornekisdekor.com/contact-og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Ornek Is Dekor İletişim",
-      },
-    ],
+      "Ankara Ostim'deki showroom'umuzu ziyaret edin veya bize ulaşın. Ücretsiz keşif ve teklif için iletişime geçin.",
   },
 }
 
