@@ -1,23 +1,30 @@
 import type React from "react"
 import "./globals.css"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import Layout from "./components/layout"
-
-const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.ornekisdekor.com"),
   title: {
-    default: "Ornek Is Dekor - Kaliteli Bahçe Mobilyaları",
-    template: "%s | Ornek Is Dekor",
+    default: "Örnek İş Dekor - Ankara Bahçe Mobilyaları | Kaliteli Dış Mekan Mobilyaları",
+    template: "%s | Örnek İş Dekor",
   },
   description:
-    "Ornek Is Dekor, kaliteli ve şık bahçe mobilyaları sunan lider bir markadır. Bahçeniz için en iyi mobilyaları keşfedin.",
-  keywords: ["bahçe mobilyaları", "dış mekan mobilyaları", "bahçe dekorasyonu", "Ornek Is Dekor"],
-  authors: [{ name: "Ornek Is Dekor" }],
-  creator: "Ornek Is Dekor",
-  publisher: "Ornek Is Dekor",
+    "Ankara Ostim'de 20 yılı aşkın deneyimle alüminyum, ahşap ve rattan bahçe mobilyaları. Özel tasarım ve ücretsiz montaj ile hayalinizdeki bahçeyi yaratıyoruz.",
+  keywords: [
+    "bahçe mobilyası",
+    "bahçe mobilyaları",
+    "bahçe mobilyası Ankara",
+    "Ankara bahçe mobilyası",
+    "dış mekan mobilyaları",
+    "balkon mobilyaları",
+    "alüminyum bahçe mobilyası",
+    "rattan bahçe mobilyası",
+    "özel tasarım bahçe mobilyası",
+  ],
+  authors: [{ name: "Örnek İş Dekor" }],
+  creator: "Örnek İş Dekor",
+  publisher: "Örnek İş Dekor",
   formatDetection: {
     email: false,
     address: false,
@@ -27,13 +34,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "tr_TR",
     url: "https://www.ornekisdekor.com",
-    siteName: "Ornek Is Dekor",
+    siteName: "Örnek İş Dekor",
+    title: "Örnek İş Dekor - Ankara Bahçe Mobilyaları",
+    description:
+      "Ankara Ostim'de 20 yılı aşkın deneyimle alüminyum, ahşap ve rattan bahçe mobilyaları. Özel tasarım ve ücretsiz montaj.",
     images: [
       {
         url: "https://www.ornekisdekor.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Ornek Is Dekor - Kaliteli Bahçe Mobilyaları",
+        alt: "Örnek İş Dekor - Ankara Bahçe Mobilyaları",
       },
     ],
   },
@@ -41,6 +51,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@ornekisdekor",
     creator: "@ornekisdekor",
+    title: "Örnek İş Dekor - Ankara Bahçe Mobilyaları",
+    description:
+      "Ankara Ostim'de 20 yılı aşkın deneyimle alüminyum, ahşap ve rattan bahçe mobilyaları.",
   },
   robots: {
     index: true,
@@ -53,7 +66,43 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-    generator: 'v0.dev'
+  alternates: {
+    canonical: "https://www.ornekisdekor.com",
+  },
+}
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Örnek İş Dekor",
+  description:
+    "Ankara Ostim'de 20 yılı aşkın deneyimle alüminyum, ahşap ve rattan bahçe mobilyaları üretimi ve satışı.",
+  url: "https://www.ornekisdekor.com",
+  telephone: "+90-312-384-56-78",
+  email: "info@ornekisdekor.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Ostim OSB Mahallesi, 100. Yıl Bulvarı No: 45",
+    addressLocality: "Yenimahalle",
+    addressRegion: "Ankara",
+    addressCountry: "TR",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 39.975,
+    longitude: 32.745,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "09:00",
+      closes: "18:00",
+    },
+  ],
+  priceRange: "₺₺",
+  image: "https://www.ornekisdekor.com/og-image.jpg",
+  sameAs: [],
 }
 
 export default function RootLayout({
@@ -63,12 +112,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="tr">
-      <body className={inter.className}>
+      <body className="font-sans antialiased">
         <Layout>{children}</Layout>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </body>
     </html>
   )
 }
-
-
-import './globals.css'

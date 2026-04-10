@@ -2,21 +2,13 @@ import type { Metadata } from "next"
 import ProductsContent from "./ProductsContent"
 
 export const metadata: Metadata = {
-  title: "Ürünlerimiz - Bahçe Mobilyaları Koleksiyonu",
+  title: "Bahçe Mobilyaları - Alüminyum, Ahşap, Rattan Koleksiyonu",
   description:
-    "Ornek Is Dekor'un geniş bahçe mobilyaları koleksiyonunu keşfedin. Sandalyeler, masalar, salıncaklar ve daha fazlası için ürün kataloğumuza göz atın.",
+    "Ankara'nın en geniş bahçe mobilyası koleksiyonu. Alüminyum oturma grupları, tik ahşap masa setleri, rattan şezlonglar ve daha fazlası. Özel sipariş kabul edilir.",
   openGraph: {
-    title: "Ornek Is Dekor - Bahçe Mobilyaları Koleksiyonu",
+    title: "Bahçe Mobilyaları Koleksiyonu | Örnek İş Dekor Ankara",
     description:
-      "Geniş bahçe mobilyaları koleksiyonumuzu keşfedin. Sandalyeler, masalar, salıncaklar ve daha fazlası için ürün kataloğumuza göz atın.",
-    images: [
-      {
-        url: "https://www.ornekisdekor.com/products-og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Ornek Is Dekor Ürün Koleksiyonu",
-      },
-    ],
+      "Alüminyum, ahşap ve rattan bahçe mobilyaları. Oturma grupları, masa setleri, şezlonglar. Ankara'ya ücretsiz teslimat.",
   },
 }
 
