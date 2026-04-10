@@ -142,7 +142,7 @@ const ContactContent = () => {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Honeypot */}
-                <input type="text" name="website" value={formData.website} onChange={handleChange} style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
+                <input type="text" name="website" value={formData.website} onChange={handleChange} className="honeypot-field" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
                 {status === "error" && (
                   <div className="flex items-start gap-2 bg-red-50 text-red-700 p-3 rounded-md text-sm">

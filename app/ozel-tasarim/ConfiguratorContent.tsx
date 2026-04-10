@@ -235,7 +235,7 @@ export default function ConfiguratorContent() {
                   <div>
                     <h2 className="text-xl font-bold text-gray-900 mb-6">İletişim bilgileriniz</h2>
                     {/* Honeypot */}
-                    <input type="text" name="website" value={contact.website} onChange={(e) => setContact((c) => ({ ...c, website: e.target.value }))} style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
+                    <input type="text" name="website" value={contact.website} onChange={(e) => setContact((c) => ({ ...c, website: e.target.value }))} className="honeypot-field" tabIndex={-1} autoComplete="off" aria-hidden="true" />
                     {status === "error" && (
                       <div className="flex items-start gap-2 bg-red-50 text-red-700 p-3 rounded-md text-sm mb-4">
                         <AlertCircle size={16} className="mt-0.5 flex-shrink-0" />

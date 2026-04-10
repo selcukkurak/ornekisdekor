@@ -10,6 +10,15 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  /* Honeypot field – hidden from users but accessible to bots */
+  .honeypot-field {
+    opacity: 0;
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
 }
 
 @layer base {
