@@ -9,11 +9,17 @@ const MobileMenu = () => {
 
   return (
     <div className="md:hidden">
-      <button onClick={() => setIsOpen(!isOpen)} className="p-2">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="p-2"
+        aria-label={isOpen ? "Menüyü kapat" : "Menüyü aç"}
+        aria-expanded={isOpen}
+        aria-controls="mobile-navigation"
+      >
         {isOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
       {isOpen && (
-        <div className="absolute top-16 left-0 right-0 bg-green-800 p-4">
+        <div id="mobile-navigation" className="absolute z-[1000] top-16 left-0 right-0 bg-green-800 p-4">
           <nav>
             <ul className="flex flex-col space-y-2">
               <li>

@@ -14,7 +14,7 @@ const AboutContent: React.FC = () => {
       </p>
       <p className="text-base md:text-lg">
         Ornek Is Dekor olarak, bahçenizi yaşam alanınızın değerli bir parçası haline getirmek için buradayız. Sizleri
-        showroom'umuza bekliyor, hayalinizdeki bahçeyi birlikte tasarlamak için sabırsızlanıyoruz.
+        showroom&apos;umuza bekliyor, hayalinizdeki bahçeyi birlikte tasarlamak için sabırsızlanıyoruz.
       </p>
     </div>
   )

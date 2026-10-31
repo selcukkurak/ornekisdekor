@@ -1,10 +1,8 @@
 import type React from "react"
 import "./globals.css"
+import "leaflet/dist/leaflet.css"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import Layout from "./components/layout"
-
-const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.ornekisdekor.com"),
@@ -53,7 +51,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-    generator: 'v0.dev'
+  generator: "Next.js",
 }
 
 export default function RootLayout({
@@ -63,7 +61,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="tr">
-      <body className={inter.className}>
+      <body>
         <Layout>{children}</Layout>
       </body>
     </html>
@@ -71,4 +69,3 @@ export default function RootLayout({
 }
 
 
-import './globals.css'

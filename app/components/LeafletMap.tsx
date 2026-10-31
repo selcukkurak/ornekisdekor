@@ -22,12 +22,24 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ address, lat, lng }) => {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map)
 
-      L.marker([lat, lng]).addTo(map).bindPopup(address).openPopup()
+      const popup = document.createElement("span")
+      popup.textContent = address
+      L.circleMarker([lat, lng], {
+        radius: 10,
+        color: "#1e5e3b",
+        fillColor: "#2e8b57",
+        fillOpacity: 1,
+      }).addTo(map).bindPopup(popup).openPopup()
 
       // Haritayı yeniden boyutlandır
-      setTimeout(() => {
+      const resizeTimer = setTimeout(() => {
         map.invalidateSize()
       }, 0)
+
+      return () => {
+        clearTimeout(resizeTimer)
+        map.remove()
+      }
     }
   }, [address, lat, lng])
 

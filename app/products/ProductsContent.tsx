@@ -24,7 +24,7 @@ const ProductsContent = () => {
       id: 4,
       name: "Bahçe Şemsiyesi",
       image:
-        "https://images.unsplash.com/photo-1595830796847-1649a3a94c73?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGdhcmRlbiUyMGZ1cm5pdHVyZXxlbnwwfHwwfHx8MA%3D%3D",
+        "/garden-umbrella.svg",
     },
     {
       id: 5,

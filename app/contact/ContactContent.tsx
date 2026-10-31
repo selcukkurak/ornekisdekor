@@ -3,28 +3,19 @@
 import type React from "react"
 
 import { useState } from "react"
-import dynamic from "next/dynamic"
 import Link from "next/link"
-import { Mail, Phone, MapPin, Clock, Send } from "lucide-react"
-
-const LeafletMap = dynamic(() => import("../components/LeafletMap"), {
-  ssr: false,
-})
+import { Phone, MapPin, Clock, MessageCircle } from "lucide-react"
+import { businessContact } from "@/lib/contact"
 
 const ContactContent = () => {
-  const address = "Örnek Mahallesi, Mobilya Caddesi No: 123, İstanbul"
-  const lat = 41.0082 // İstanbul'un örnek koordinatları
-  const lng = 28.9784 // Gerçek konumunuza göre güncelleyin
+  const address = businessContact.address
+  const mapQuery = encodeURIComponent(address)
 
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     phone: "",
     message: "",
   })
-
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitMessage, setSubmitMessage] = useState("")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -33,15 +24,10 @@ const ContactContent = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitting(true)
-
-    // Burada gerçek bir form gönderimi yapılabilir
-    // Şimdilik sadece simüle ediyoruz
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setSubmitMessage("Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız.")
-      setFormData({ name: "", email: "", phone: "", message: "" })
-    }, 1500)
+    const message = encodeURIComponent(
+      `Merhaba, Örnek İş Dekor ile iletişime geçmek istiyorum.\nAd Soyad: ${formData.name.trim()}${formData.phone.trim() ? `\nTelefon: ${formData.phone.trim()}` : ""}\n\n${formData.message.trim()}`,
+    )
+    window.location.href = `${businessContact.whatsappHref}?text=${message}`
   }
 
   return (
@@ -65,17 +51,21 @@ const ContactContent = () => {
               <Phone className="w-5 h-5 text-green-600 mt-1 mr-3 flex-shrink-0" />
               <div>
                 <p className="font-medium">Telefon:</p>
-                <p className="text-gray-600">(0212) 345 67 89</p>
+                <a href={businessContact.phoneHref} className="text-gray-600 hover:text-green-700 hover:underline">
+                  {businessContact.phone}
+                </a>
               </div>
             </div>
 
-            <div className="flex items-start">
-              <Mail className="w-5 h-5 text-green-600 mt-1 mr-3 flex-shrink-0" />
-              <div>
-                <p className="font-medium">E-posta:</p>
-                <p className="text-gray-600">info@ornekisdekor.com</p>
-              </div>
-            </div>
+            <a
+              href={businessContact.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-md bg-green-600 px-4 py-2 text-white hover:bg-green-700 transition-colors"
+            >
+              <MessageCircle className="w-5 h-5" aria-hidden="true" />
+              WhatsApp ile İletişime Geç
+            </a>
 
             <div className="flex items-start">
               <Clock className="w-5 h-5 text-green-600 mt-1 mr-3 flex-shrink-0" />
@@ -89,11 +79,9 @@ const ContactContent = () => {
         </div>
 
         <div className="bg-white shadow-md rounded-lg p-6">
-          <h2 className="text-xl font-semibold mb-6 border-b pb-2">Bize Mesaj Gönderin</h2>
+          <h2 className="text-xl font-semibold mb-6 border-b pb-2">WhatsApp ile Mesaj Gönderin</h2>
 
-          {submitMessage ? (
-            <div className="bg-green-50 text-green-700 p-4 rounded-md mb-4">{submitMessage}</div>
-          ) : (
+          <p className="text-sm text-gray-600 mb-4">Mesajınız WhatsApp’ta hazır açılır. Gönder düğmesine dokunarak doğrudan bize iletebilirsiniz.</p>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -104,21 +92,6 @@ const ContactContent = () => {
                   id="name"
                   name="name"
                   value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-green-500"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                  E-posta Adresiniz *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
                   onChange={handleChange}
                   required
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-green-500"
@@ -156,31 +129,30 @@ const ContactContent = () => {
 
               <button
                 type="submit"
-                disabled={isSubmitting}
                 className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors flex items-center justify-center disabled:opacity-70"
               >
-                {isSubmitting ? (
-                  "Gönderiliyor..."
-                ) : (
-                  <>
-                    <Send className="w-4 h-4 mr-2" />
-                    Mesaj Gönder
-                  </>
-                )}
+                <MessageCircle className="w-5 h-5 mr-2" aria-hidden="true" />
+                WhatsApp ile Gönder
               </button>
             </form>
-          )}
         </div>
       </div>
 
       <div className="bg-white shadow-md rounded-lg p-6">
         <h2 className="text-xl font-semibold mb-4 border-b pb-2">Konum</h2>
         <div className="h-64 md:h-96 rounded-md overflow-hidden">
-          <LeafletMap address={address} lat={lat} lng={lng} />
+          <iframe
+            title="Örnek İş Dekor konumu"
+            src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
+            className="w-full h-full border-0"
+            loading="lazy"
+            allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
         <div className="mt-4 flex justify-end">
           <Link
-            href={`https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=15/${lat}/${lng}`}
+            href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`}
             target="_blank"
             rel="noopener noreferrer"
             className="text-green-600 hover:underline text-sm md:text-base flex items-center"

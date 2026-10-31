@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-labelledby="title">
+  <title id="title">Bahçe şemsiyesi çizimi</title>
+  <rect width="800" height="600" fill="#e6f0e6"/>
+  <circle cx="650" cy="110" r="52" fill="#f7e7ac"/>
+  <path d="M0 440Q180 380 380 440T800 420V600H0Z" fill="#b6d3b6"/>
+  <ellipse cx="400" cy="530" rx="210" ry="25" fill="#96b996"/>
+  <path d="M400 165V510" stroke="#725744" stroke-width="14"/>
+  <path d="M160 285Q240 145 400 145Q560 145 640 285Z" fill="#2e8b57"/>
+  <path d="M400 145Q320 180 280 285H160Q240 145 400 145ZM400 145Q480 180 520 285H640Q560 145 400 145Z" fill="#1e5e3b"/>
+  <path d="M350 515H450L470 535H330Z" fill="#725744"/>
+  <rect x="255" y="380" width="290" height="18" rx="9" fill="#94735a"/>
+  <path d="M290 398V490M510 398V490" stroke="#725744" stroke-width="12"/>
+</svg>
