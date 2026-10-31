@@ -1,5 +1,6 @@
 import type React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import MobileMenu from "./MobileMenu"
 import { MessageCircle } from "lucide-react"
 import { businessContact } from "@/lib/contact"
@@ -9,7 +10,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div className="flex flex-col min-h-screen">
       <header className="bg-green-800 text-white p-4">
         <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-xl md:text-2xl font-bold">Ornek Is Dekor</h1>
+          <Link href="/" aria-label="Örnek İş Dekor ana sayfa" className="shrink-0">
+            <Image src="/logo.svg" alt="Örnek İş Dekor" width={440} height={100} priority className="h-auto w-56 md:w-72" />
+          </Link>
           <nav className="hidden md:block">
             <ul className="flex space-x-4">
               <li>
@@ -42,6 +45,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       <footer className="bg-green-800 text-white py-6 px-4">
         <div className="container mx-auto text-center">
+          <Link href="/" className="mb-4 inline-block" aria-label="Örnek İş Dekor ana sayfa">
+            <Image src="/logo.svg" alt="Örnek İş Dekor" width={440} height={100} className="h-auto w-64" />
+          </Link>
           <p className="text-sm md:text-base">&copy; {new Date().getFullYear()} Ornek Is Dekor. Tüm hakları saklıdır.</p>
           <p className="text-sm md:text-base mt-2">Adres: {businessContact.address}</p>
           <p className="text-sm md:text-base">

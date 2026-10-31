@@ -2,19 +2,21 @@ import type { Metadata } from "next"
 import ProductsContent from "./ProductsContent"
 
 export const metadata: Metadata = {
-  title: "Ürünlerimiz - Bahçe Mobilyaları Koleksiyonu",
+  title: "Ürünlerimiz - Ahşap ve Bahçe Mobilyaları",
   description:
-    "Ornek Is Dekor'un geniş bahçe mobilyaları koleksiyonunu keşfedin. Sandalyeler, masalar, salıncaklar ve daha fazlası için ürün kataloğumuza göz atın.",
+    "Örnek İş Dekor ürün kataloğunda ahşap dolapları, TV ünitelerini, bar setlerini ve dış mekân oturma ve yemek takımlarını inceleyin.",
+  alternates: { canonical: "/products" },
   openGraph: {
-    title: "Ornek Is Dekor - Bahçe Mobilyaları Koleksiyonu",
+    url: "/products",
+    title: "Örnek İş Dekor - Mobilya Koleksiyonu",
     description:
-      "Geniş bahçe mobilyaları koleksiyonumuzu keşfedin. Sandalyeler, masalar, salıncaklar ve daha fazlası için ürün kataloğumuza göz atın.",
+      "Ahşap dolaplar, TV üniteleri, bar setleri ve dış mekân oturma ve yemek takımlarından oluşan mobilya koleksiyonumuzu keşfedin.",
     images: [
       {
-        url: "https://www.ornekisdekor.com/products-og-image.jpg",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Ornek Is Dekor Ürün Koleksiyonu",
+        alt: "Örnek İş Dekor logo",
       },
     ],
   },

@@ -3,15 +3,17 @@ import "./globals.css"
 import "leaflet/dist/leaflet.css"
 import type { Metadata } from "next"
 import Layout from "./components/layout"
+import { siteUrl } from "@/lib/site"
+import { businessContact } from "@/lib/contact"
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.ornekisdekor.com"),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "Ornek Is Dekor - Kaliteli Bahçe Mobilyaları",
-    template: "%s | Ornek Is Dekor",
+    default: "Örnek İş Dekor — Ahşap ve Bahçe Mobilyaları Ankara",
+    template: "%s | Örnek İş Dekor",
   },
   description:
-    "Ornek Is Dekor, kaliteli ve şık bahçe mobilyaları sunan lider bir markadır. Bahçeniz için en iyi mobilyaları keşfedin.",
+    "Ankara Siteler’de ahşap vitrin, TV ünitesi, bar takımı ve bahçe mobilyaları. Örnek İş Dekor ürün fotoğraflarını inceleyin, WhatsApp’tan bilgi alın.",
   keywords: ["bahçe mobilyaları", "dış mekan mobilyaları", "bahçe dekorasyonu", "Ornek Is Dekor"],
   authors: [{ name: "Ornek Is Dekor" }],
   creator: "Ornek Is Dekor",
@@ -24,21 +26,20 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "tr_TR",
-    url: "https://www.ornekisdekor.com",
+    url: siteUrl,
     siteName: "Ornek Is Dekor",
     images: [
       {
-        url: "https://www.ornekisdekor.com/og-image.jpg",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Ornek Is Dekor - Kaliteli Bahçe Mobilyaları",
+        alt: "Örnek İş Dekor logosu — Ahşap ve Bahçe Mobilyaları",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@ornekisdekor",
-    creator: "@ornekisdekor",
+    images: ["/opengraph-image"],
   },
   robots: {
     index: true,
@@ -62,6 +63,25 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FurnitureStore",
+            name: "Örnek İş Dekor",
+            url: siteUrl,
+            logo: `${siteUrl}/logo.svg`,
+            image: `${siteUrl}/opengraph-image`,
+            telephone: "+905517311893",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: businessContact.address,
+              addressLocality: "Altındağ",
+              addressRegion: "Ankara",
+              addressCountry: "TR",
+            },
+          }).replace(/</g, "\\u003c") }}
+        />
         <Layout>{children}</Layout>
       </body>
     </html>

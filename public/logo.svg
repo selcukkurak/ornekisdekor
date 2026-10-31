@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="100" viewBox="0 0 440 100" role="img" aria-labelledby="title">
+  <title id="title">Örnek İş Dekor</title>
+  <rect x="4" y="8" width="84" height="84" rx="24" fill="#f4e8cb"/>
+  <path d="M24 49V37Q24 27 34 27H58Q68 27 68 37V49M20 47V65H72V47M28 65V75M64 65V75M20 56H72" fill="none" stroke="#1e5e3b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M49 23Q53 10 68 15Q66 28 49 23Z" fill="#2e8b57"/>
+  <text x="106" y="48" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="32" font-weight="700">ÖRNEK İŞ DEKOR</text>
+  <text x="108" y="73" fill="#f4e8cb" font-family="Arial,Helvetica,sans-serif" font-size="13" letter-spacing="3">AHŞAP &amp; BAHÇE MOBİLYALARI</text>
+</svg>

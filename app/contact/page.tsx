@@ -4,17 +4,19 @@ import ContactContent from "./ContactContent"
 export const metadata: Metadata = {
   title: "İletişim - Bize Ulaşın",
   description:
-    "Ornek Is Dekor ile iletişime geçin. Adres bilgilerimiz, telefon numaramız ve e-posta adresimiz. Sorularınız için bize ulaşın veya iletişim formumuz aracılığıyla mesaj gönderin.",
+    "Örnek İş Dekor: Siteler Fatin sokak No:36 4 numara Altındağ/ANKARA. Telefon ve WhatsApp: 0 551 731 18 93. Mobilyalarımız hakkında bilgi almak için bize ulaşın.",
+  alternates: { canonical: "/contact" },
   openGraph: {
-    title: "Ornek Is Dekor - İletişim Bilgileri",
+    url: "/contact",
+    title: "Örnek İş Dekor - İletişim Bilgileri",
     description:
-      "Ornek Is Dekor ile iletişime geçin. Adres bilgilerimiz, telefon numaramız ve e-posta adresimiz. Sorularınız için bize ulaşın veya iletişim formumuz aracılığıyla mesaj gönderin.",
+      "Siteler Fatin sokak No:36 4 numara Altındağ/ANKARA adresindeki Örnek İş Dekor'a telefon veya WhatsApp üzerinden ulaşın: 0 551 731 18 93.",
     images: [
       {
-        url: "https://www.ornekisdekor.com/contact-og-image.jpg",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Ornek Is Dekor İletişim",
+        alt: "Örnek İş Dekor logo",
       },
     ],
   },
