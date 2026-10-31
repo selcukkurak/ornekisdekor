@@ -155,10 +155,10 @@ const ContactContent = () => {
             href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-green-600 hover:underline text-sm md:text-base flex items-center"
+            className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-5 py-3 text-sm md:text-base font-medium text-white hover:bg-green-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
           >
-            <MapPin className="w-4 h-4 mr-1" />
-            Tam Ekran Haritada Gör
+            <MapPin className="w-5 h-5" aria-hidden="true" />
+            Google Maps’te Aç
           </Link>
         </div>
       </div>
